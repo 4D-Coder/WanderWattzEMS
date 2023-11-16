@@ -63,8 +63,15 @@ RSpec.configure do |config|
 end
 
 VCR.configure do |config|
-  config.cassette_library_dir = "fixtures/vcr_cassettes"
+  config.cassette_library_dir = 'fixtures/vcr_cassettes'
   config.hook_into :webmock
   config.allow_http_connections_when_no_cassette = true
-  config.filter_sensitive_data("secret_key") { |interaction| ENV['geoapify_api_key'] }
+  config.filter_sensitive_data('secret_key') { |interaction| ENV['geoapify_api_key'] }
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
