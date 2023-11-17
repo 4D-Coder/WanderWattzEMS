@@ -53,6 +53,8 @@ gem 'faraday'
 # Storing secrets in environment variables [https://github.com/laserlemon/figaro]
 gem 'figaro'
 
+gem 'bcrypt'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -70,6 +72,7 @@ group :development, :test do
   gem 'factory_bot'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'shoulda-matchers'
 end
 
 group :development do

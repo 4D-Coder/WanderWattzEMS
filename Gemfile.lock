@@ -73,6 +73,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     base64 (0.2.0)
+    bcrypt (3.1.19)
     bindex (0.8.1)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
@@ -252,6 +253,8 @@ GEM
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -304,6 +307,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord_json_validator
+  bcrypt
   bootsnap
   capybara
   debug
@@ -323,6 +327,7 @@ DEPENDENCIES
   rails (~> 7.0.7)
   rspec-rails
   rubocop
+  shoulda-matchers
   simplecov
   sprockets-rails
   stimulus-rails
