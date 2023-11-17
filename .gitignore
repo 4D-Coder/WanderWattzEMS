@@ -34,5 +34,9 @@
 /config/application.yml
 
 # Ignore fixture VCR cassettes
-
 /fixtures/vcr_cassettes
+
+# Ignore coverage data
+/coverage
+
+
