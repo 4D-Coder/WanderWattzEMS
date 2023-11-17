@@ -53,7 +53,10 @@ gem 'faraday'
 # Storing secrets in environment variables [https://github.com/laserlemon/figaro]
 gem 'figaro'
 
+# Encrypting user credentials for added security
 gem 'bcrypt'
+
+gem 'brakeman'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
