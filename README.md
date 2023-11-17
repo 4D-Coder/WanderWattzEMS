@@ -35,7 +35,7 @@ Things you may want to cover:
 <img src="https://github.com/4D-Coder/WanderWattz-EMS/assets/89714398/cce44916-d4dd-4ebd-9fa5-5f34a2539526" alt="WanderWattz Logo" width="500px">
 
 ![languages](https://img.shields.io/github/languages/top/4D-Coder/WanderWattz-EMS?color=red)
-![PRs](https://img.shields.io/github/issues-pr-closed/4D-Coder/WanderWattz-EMS)
+![PRs](https://img.shields.io/github/issues-pr-closed/4D-Coder/WanderWattzEMS)
 ![rspec](https://img.shields.io/gem/v/rspec?color=blue&label=rspec)
 
 </div>
