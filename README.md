@@ -126,7 +126,7 @@ Things you may want to cover:
 
 <h3><strong>CI/CD<strong></h3>
 
-![GitHubActions](https://img.shields.io/badge/github_Projects-525DDC.svg?style=for-the-badge&logo=github&logoColor=white)
+![GitHubActions](https://img.shields.io/badge/github_Actions-525DDC.svg?style=for-the-badge&logo=github&logoColor=white)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
