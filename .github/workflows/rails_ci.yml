@@ -40,8 +40,12 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       # Add or replace database setup steps here
-      - name: Database setup
-        run: bin/rails db:{create,migrate}
+      - name: Create and migrate database
+        env:
+          RAILS_ENV: test
+        run: |
+          rails db:create
+          rails db:migrate
       - name: Set up database schema
         run: bin/rails db:schema:load
       # Add or replace test runners here
