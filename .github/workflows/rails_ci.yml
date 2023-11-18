@@ -43,8 +43,8 @@ jobs:
         env:
           RAILS_ENV: test
         run: |
-          rails db:create
-          rails db:migrate
+          bin/rails db:create
+          bin/rails db:migrate
       - name: Set up database schema
         run: bin/rails db:schema:load
       # Add or replace test runners here
