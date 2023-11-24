@@ -24,6 +24,7 @@ jobs:
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5433/rails_test"
+      GEOAPIFY_API_KEY: ${{ secrets.GEOAPIFY_API_KEY }}
     strategy:
       fail-fast: false
       matrix:
