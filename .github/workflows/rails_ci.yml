@@ -18,9 +18,9 @@ jobs:
         ports:
           - "5433:5432"
         env:
-          POSTGRES_DB: wanderwattz_ems_test
-          POSTGRES_USER: wanderwattz_ems
-          POSTGRES_PASSWORD: <%= ENV["WANDERWATTZ_EMS_DATABASE_PASSWORD"] %>
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5433/rails_test"
