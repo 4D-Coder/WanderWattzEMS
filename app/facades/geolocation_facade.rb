@@ -1,4 +1,4 @@
-reqiire 'rails_helper'
+require 'rails_helper'
 
 class GeolocationFacade
   BASE_URL = 'https://api.geoapify.com'
