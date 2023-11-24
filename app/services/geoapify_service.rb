@@ -5,7 +5,7 @@ class GeoapifyService < ApplicationService
       response = conn(url).get do |req|
         req.path = '/v1/ipinfo'
         req.params['ip'] = ip_address
-        req.params['apiKey'] = ENV['geoapify_api_key']
+        req.params['apiKey'] = ENV['GEOAPIFY_API_KEY']
       end
 
       parse_json(response.body)
