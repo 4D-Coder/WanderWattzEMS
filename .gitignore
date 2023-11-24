@@ -33,8 +33,8 @@
 # Ignore application configuration
 /config/application.yml
 
-# Ignore fixture VCR cassettes
-/fixtures/vcr_cassettes
+# Ignore fixtures/VCR cassettes
+/fixtures
 
 # Ignore coverage data
 /coverage
