@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class GeoapifyService < ApplicationService
   class << self
     def ip_geolocation(url, ip_address)
