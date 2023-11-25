@@ -3,4 +3,4 @@ AllCops:
     - 'bin/bundle'
 
 Style/Documentation:
-  Enabled: false 
+  Enabled: false
