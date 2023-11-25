@@ -69,7 +69,7 @@ jobs:
           bundler-cache: true
       # Add or replace any other lints here
       - name: Security audit dependencies
-        run: bin/rails bundler-audit --update
+        run: bundle exec bundler-audit --update
         # run: bundle exec bundler-audit --update
       - name: Security audit application code
         run: bin/brakeman -q -w2
