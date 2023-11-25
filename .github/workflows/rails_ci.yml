@@ -78,6 +78,6 @@ jobs:
         run: |
           pwd
           rm -rf .rubocop_cache
-          bundle exec rubocop --parallel -V
+          bundle exec rubocop --parallel -d
 
         # run: bundle exec rubocop --parallel
