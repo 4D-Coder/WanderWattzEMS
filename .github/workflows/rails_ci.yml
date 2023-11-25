@@ -78,6 +78,6 @@ jobs:
         run: |
           pwd
           rm -rf .rubocop_cache
-          bundle exec rubocop --config /home/runner/work/WanderWattzEMS/WanderWattzEMS/.rubocop.yml
+          bundle exec rubocop --parallel
 
         # run: bundle exec rubocop --parallel
