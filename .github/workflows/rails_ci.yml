@@ -75,5 +75,7 @@ jobs:
         run: bundle exec brakeman -q -w2
         # run: bundle exec brakeman -q -w2
       - name: Lint Ruby files
-        run: bundle exec rubocop --parallel
+        run: |
+          rm -rf .rubocop_cache
+          bundle exec rubocop --parallel
         # run: bundle exec rubocop --parallel
