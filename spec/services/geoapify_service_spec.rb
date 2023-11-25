@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe GeoapifyService, type: :service do
-  context '#ip_geolocation' do
+  describe '#ip_geolocation' do
     def host_ip
       conn = Faraday.new(url: 'https://api.ipify.org')
       response = conn.get { |req| req.params['format'] = 'json' }
@@ -15,7 +15,8 @@ RSpec.describe GeoapifyService, type: :service do
 
     it 'can convert location information into coordinates' do
       VCR.use_cassette('IP Geolocation', record: :once) do
-        response = GeoapifyService.ip_geolocation('https://api.geoapify.com', ip_address)
+        response = described_class.ip_geolocation('https://api.geoapify.com',
+                                                  ip_address)
 
         expect(response).to have_key :location
 
