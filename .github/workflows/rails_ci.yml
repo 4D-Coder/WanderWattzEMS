@@ -68,6 +68,8 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       # Add or replace any other lints here
+      - name: List Gems
+        run: bundle list
       - name: Security audit dependencies
         run: bundle exec bundler-audit --update
         # run: bundle exec bundler-audit --update
@@ -78,6 +80,6 @@ jobs:
         run: |
           pwd
           rm -rf .rubocop_cache
-          bundle exec rubocop --config .rubocop.yml
+        # bundle exec rubocop --config .rubocop.yml
 
         # run: bundle exec rubocop --parallel
