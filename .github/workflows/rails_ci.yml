@@ -76,10 +76,12 @@ jobs:
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
         # run: bundle exec brakeman -q -w2
+      - name: Get panolint path
+        run: echo "PANOLINT_PATH=$(bundle info panolint --path)" >> $GITHUB_ENV
       - name: Lint Ruby files
         run: |
-          pwd
           rm -rf .rubocop_cache
+          bundle exec rubocop --config $PANOLINT_PATH/panolint-rubocop.yml
         # bundle exec rubocop --config .rubocop.yml
 
         # run: bundle exec rubocop --parallel
