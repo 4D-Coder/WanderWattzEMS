@@ -2,7 +2,7 @@
 # https://docs.rubocop.org/rubocop/index.html
 
 inherit_gem:
-  panolint: .rubocop.yml
+  panolint: ./.rubocop.yml
 
 AllCops:
   Exclude:
