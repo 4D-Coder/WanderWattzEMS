@@ -74,23 +74,25 @@ jobs:
         run: bundle exec bundler-audit --update
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
-      - name: Get panolint path
+      - name: Get panolint gem path
+        id: panolint_path
         run: |
-          panolint_path=$(bundle info panolint --path)
-          echo "$panolint_path"
-          ls $panolint_path
+          echo "PANOLINT_PATH=$(bundle info panolint --path)" >> $GITHUB_ENV
+          echo "$PANOLINT_PATH"
+
       - name: Append custom cops to panolint config
         run: |
-          panolint_rubocop_file="$panolint_path/panolint-rubocop.yml"
-          if [ -f "$panolint_rubocop_file" ]; then
-
+          panolint_rubocop_file="$PANOLINT_PATH/panolint-rubocop.yml"
           # Append or insert the desired configuration
-          echo "inherit_gem:" >> "$panolint_rubocop_file"
-          echo "  rubocop: path/to/your/rubocop/config.yml" >> "$panolint_rubocop_file"
-          echo "Modified panolint-rubocop.yml successfully."
+
+          if [ -f "$panolint_rubocop_file" ]; then
+            echo "inherit_gem:" >> "$panolint_rubocop_file"
+            echo "  rubocop: .rubocop.yml" >> "$panolint_rubocop_file"
+            cat $panolint_rubocop_file
+            echo "Modified panolint-rubocop.yml successfully."
           else
-              echo "panolint-rubocop.yml not found."
-              exit 1
+            echo "panolint-rubocop.yml not found."
+            exit 1
           fi
       - name: Lint Ruby files
         run: |
