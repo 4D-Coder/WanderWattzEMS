@@ -74,28 +74,33 @@ jobs:
         run: bundle exec bundler-audit --update
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
-      - name: Get panolint gem path
-        id: panolint_path
-        run: |
-          echo "PANOLINT_PATH=$(bundle info panolint --path)" >> $GITHUB_ENV
-          echo "$PANOLINT_PATH"
+      # - name: Get panolint gem path
+      #   id: panolint_path
+      #   run: |
+      #     echo "PANOLINT_PATH=$(bundle info panolint --path)" >> $GITHUB_ENV
+      #     echo "$PANOLINT_PATH"
 
-      - name: Append custom cops to panolint config
-        run: |
-          panolint_rubocop_file="$PANOLINT_PATH/panolint-rubocop.yml"
-          # Append or insert the desired configuration
+      # - name: Append custom cops to panolint config
+      #   run: |
+      #     panolint_rubocop_file="$PANOLINT_PATH/panolint-rubocop.yml"
+      #     # Append or insert the desired configuration
 
-          if [ -f "$panolint_rubocop_file" ]; then
-            echo "inherit_gem:" >> "$panolint_rubocop_file"
-            echo "  rubocop: .rubocop.yml" >> "$panolint_rubocop_file"
-            cat $panolint_rubocop_file
-            echo "Modified panolint-rubocop.yml successfully."
-          else
-            echo "panolint-rubocop.yml not found."
-            exit 1
-          fi
+      #     if [ -f "$panolint_rubocop_file" ]; then
+      #       # Create a new file with the desired content
+      #       echo "inherit_gem:" > temp.yml
+      #       echo "  rubocop: path/to/your/rubocop/config.yml" >> temp.yml
+
+      #       # Append the original file content to the new file
+      #       cat "$panolint_rubocop_file" >> temp.yml
+
+      #       # Replace the original file with the new file
+      #       mv temp.yml "$panolint_rubocop_file"
+      #     else
+      #       echo "panolint-rubocop.yml not found."
+      #       exit 1
+      #     fi
       - name: Lint Ruby files
         run: |
           rm -rf .rubocop_cache
-          bundle exec rubocop --config $PANOLINT_PATH/panolint-rubocop.yml
+          bundle exec rubocop
         # run: bundle exec rubocop --parallel
