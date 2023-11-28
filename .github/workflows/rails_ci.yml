@@ -74,11 +74,11 @@ jobs:
         run: bundle exec bundler-audit --update
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
-      # - name: Get panolint gem path
-      #   id: panolint_path
-      #   run: |
-      #     echo "PANOLINT_PATH=$(bundle info panolint --path)" >> $GITHUB_ENV
-      #     echo "$PANOLINT_PATH"
+      - name: Get panolint gem path
+        id: panolint_path
+        run: |
+          echo "PANOLINT_PATH=$(bundle info panolint --path)" >> $GITHUB_ENV
+          ls $PANOLINT_PATH
 
       # - name: Append custom cops to panolint config
       #   run: |
