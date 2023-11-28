@@ -1,8 +1,6 @@
 # Options for each cop provided within Rubocop Documentation:
 # https://docs.rubocop.org/rubocop/index.html
 
-inherit_gem:
-  panolint: panolint-rubocop.yml
 
 AllCops:
   Exclude:
@@ -24,9 +22,12 @@ Style/Documentation:
 Style/StringLiterals:
   Enabled: false
 
-RSpec/ImplicitExpect:
-  EnforcedStyle: 'should'
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+# Cops with panolint dependency below
+inherit_gem:
+  panolint: panolint-rubocop.yml
+
+RSpec/ImplicitExpect:
+  EnforcedStyle: 'should'
