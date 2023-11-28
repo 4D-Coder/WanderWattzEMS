@@ -77,8 +77,7 @@ jobs:
       - name: Get panolint gem path
         id: panolint_path
         run: |
-          bundle info panolint --path
-          echo "PANOLINT_PATH=$(bundle info panolint --path)" >> $GITHUB_ENV
+          PANOLINT_PATH=$(bundle info panolint --path)
           ls $PANOLINT_PATH
 
       # - name: Append custom cops to panolint config
