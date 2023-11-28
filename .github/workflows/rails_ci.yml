@@ -75,7 +75,9 @@ jobs:
       - name: Security audit application code
         run: bundle exec brakeman -q -w2
       - name: Get panolint path
-        run: panolint_path=$(bundle info panolint --path)
+        run: |
+          panolint_path=$(bundle info panolint --path)
+          echo "$panolint_path"
       - name: Append custom cops to panolint config
         run: |
           panolint_rubocop_file="$panolint_path/panolint-rubocop.yml"
