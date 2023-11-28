@@ -102,5 +102,5 @@ jobs:
       - name: Lint Ruby files
         run: |
           rm -rf .rubocop_cache
-          bundle exec rubocop
+          bundle exec rubocop --debug
         # run: bundle exec rubocop --parallel
