@@ -1,0 +1,106 @@
+# This workflow uses actions that are not certified by GitHub.  They are
+# provided by a third-party and are governed by separate terms of service,
+# privacy policy, and support documentation.
+#
+# This workflow will install a prebuilt Ruby version, install dependencies, and
+# run tests and linters.
+name: "Ruby on Rails CI"
+on: [push]
+  # push:
+  #   branches: [ $default-branch ]
+  # pull_request:
+  #   branches: [ $default-branch ]
+jobs:
+  test:
+    services:
+      postgres:
+        image: postgres:15-alpine
+        ports:
+          - "5433:5432"
+        env:
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5433/rails_test"
+      GEOAPIFY_API_KEY: ${{ secrets.GEOAPIFY_API_KEY }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        ruby: ['3.1.1']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      # Add or replace dependency steps here
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        with:
+          bundler-cache: true
+      # Add or replace database setup steps here
+      - name: Create and migrate database
+        env:
+          RAILS_ENV: test
+        run: |
+          bin/rails db:create
+          bin/rails db:migrate
+      - name: Set up database schema
+        run: bin/rails db:schema:load
+      # Add or replace test runners here
+      - name: Run tests
+        run: bundle exec rspec
+
+  lint:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        ruby: ['3.1.1']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      # Add or replace any other lints here
+      - name: List Gems
+        run: bundle list
+      - name: Security audit dependencies
+        run: bundle exec bundler-audit --update
+      - name: Security audit application code
+        run: bundle exec brakeman -q -w2
+      - name: Get panolint gem path
+        id: panolint_path
+        run: |
+          PANOLINT_PATH=$(bundle info panolint --path)
+          ls $PANOLINT_PATH
+
+      # - name: Append custom cops to panolint config
+      #   run: |
+      #     panolint_rubocop_file="$PANOLINT_PATH/panolint-rubocop.yml"
+      #     # Append or insert the desired configuration
+
+      #     if [ -f "$panolint_rubocop_file" ]; then
+      #       # Create a new file with the desired content
+      #       echo "inherit_gem:" > temp.yml
+      #       echo "  rubocop: path/to/your/rubocop/config.yml" >> temp.yml
+
+      #       # Append the original file content to the new file
+      #       cat "$panolint_rubocop_file" >> temp.yml
+
+      #       # Replace the original file with the new file
+      #       mv temp.yml "$panolint_rubocop_file"
+      #     else
+      #       echo "panolint-rubocop.yml not found."
+      #       exit 1
+      #     fi
+      - name: Lint Ruby files
+        run: |
+          rm -rf .rubocop_cache
+          bundle exec rubocop --debug
+        # run: bundle exec rubocop --parallel

@@ -1,0 +1,33 @@
+# Options for each cop provided within Rubocop Documentation:
+# https://docs.rubocop.org/rubocop/index.html
+
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'config/**/*'
+    - 'db/schema.rb'
+
+Layout/LineLength:
+  Max: 80
+  IgnoreCopDirectives: true
+  AllowedPatterns:
+    - '#.*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Cops with panolint dependency below
+inherit_gem:
+  panolint: panolint-rubocop.yml
+
+RSpec/ImplicitExpect:
+  EnforcedStyle: 'should'

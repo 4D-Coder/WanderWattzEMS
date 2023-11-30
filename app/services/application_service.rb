@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationService
   class << self
     def parse_json(response_body)
