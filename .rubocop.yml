@@ -27,7 +27,7 @@ Style/FrozenStringLiteralComment:
 
 # Cops with panolint dependency below
 inherit_gem:
-  panolint: panolint-rubocop.yml
+  panolint: panolint.yml
 
 RSpec/ImplicitExpect:
   EnforcedStyle: 'should'
