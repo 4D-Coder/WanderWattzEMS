@@ -96,7 +96,7 @@ jobs:
       #       echo "panolint-rubocop.yml not found."
       #       exit 1
       #     fi
-      - name: Lint Ruby files
+      - name: Clear Rubocop cache and lint ruby files
         run: |
           rm -rf .rubocop_cache
           bundle exec rubocop --debug
