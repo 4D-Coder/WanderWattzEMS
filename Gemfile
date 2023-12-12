@@ -95,3 +95,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+gem "shakapacker", "= 7.1"
+
+gem "react_on_rails", "= 13.4"
