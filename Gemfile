@@ -62,6 +62,8 @@ gem 'bundle-audit'
 
 gem 'panolint', '~> 0.1.6'
 
+gem 'slim'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'activerecord_json_validator'
