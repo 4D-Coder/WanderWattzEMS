@@ -8,7 +8,9 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= javascript_pack_tag "application" %>
+    <%# javascript_pack_tag "application" %>
+    <%= javascript_pack_tag 'wanderwattz-ems-bundle' %>
+    <%= stylesheet_pack_tag 'wanderwattz-ems-bundle' %>
   </head>
 
   <body>
