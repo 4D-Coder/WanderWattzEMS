@@ -1,15 +1,19 @@
 import React from 'react';
-import welcome_logo from './welcome-logo.png';
+import PageStructure from '../AppLayouts/PageStructure';
 import Button from '../AppLayouts/Button';
+import welcome_logo from './welcome-logo.png';
+
 function HomePage() {
   return (
-    <div className='home-page'>
-      <img src={welcome_logo} alt='WanderWattz Logo' className='logo' />
-      <Button
-        text='Get Started!'
-        onClick={() => console.log('Redirecting~!')}
-      />
-    </div>
+    <PageStructure>
+      <div className='home-page'>
+        <img src={welcome_logo} alt='WanderWattz Logo' className='logo' />
+        <Button
+          text='Get Started!'
+          onClick={() => console.log('Redirecting~!')}
+        />
+      </div>
+    </PageStructure>
   );
 }
 

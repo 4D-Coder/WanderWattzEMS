@@ -1,10 +1,12 @@
 import React from 'react';
-import style from './PageStructure.module.css';
+import styles from './PageStructure.module.css';
 
-const PageStructure = () => {
+function PageStructure({ children }) {
   return (
-    <h1>Welcome to WanderWattz!</h1>
-  )
+    <div className={styles.page_structure}>
+      { children }
+    </div>
+  );
 }
 
-export default PageStructure
+export default PageStructure;
