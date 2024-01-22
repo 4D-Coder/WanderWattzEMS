@@ -32,6 +32,7 @@ Things you may want to cover:
 <!-- Opening -->
 <br />
 <div align="center">
+<p>Working</p>
 <img src="https://github.com/4D-Coder/WanderWattz-EMS/assets/89714398/cce44916-d4dd-4ebd-9fa5-5f34a2539526" alt="WanderWattz Logo" width="500px">
 
 ![languages](https://img.shields.io/github/languages/top/4D-Coder/WanderWattz-EMS?color=red)
